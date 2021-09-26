@@ -48,19 +48,22 @@ const userService = {
 
 #### Redux는 어떤식으로 설계하는 것이 좋은가요?
 
-Redux는 Redux-devtool로 디버깅하기 좋습니다. 다만 저는 사용하지 않습니다. 여러가지 이유가 있습니다.
+Redux는 Redux-devtool로 디버깅하기 좋습니다. 다만 저는 신규 개발에서는 사용하지 않습니다. 여러가지 이유가 있습니다.
 
 1. 하나의 기능을 만드는데 4개의 파일을 만들어야한다. 작업량이 늘어난다.
    * dispatch -&gt; action -&gt; reducer -&gt; store
-2. Store간에 의존성이 심해진다.
-3. Rx-observable 같은 라이브러리 사용시, epic에서 커플링이 심해진다.
+2. Rx-observable 같은 라이브러리 사용시, epic에서 커플링이 심해진다.
    * A epic에서 a action을 호출해서 B epic에 영향을 주는 현상
    * Flow같은 문서화가 안되어 있으면 매우 복잡해진다.
-4. 주로 주니어들이 어떠한 데이터든 Store에 넣는 경우가 생긴다.
+3. 주로 주니어들이 어떠한 데이터든 Store에 넣는 경우가 생긴다.
+4. store는 "외부요인으로" 취급되는 것이기 때문에 React의 내부 스케줄러에 접근할 수 없다.
+   * \*\*\*\*[**https://ui.toast.com/weekly-pick/ko\_20200616\#redux%EB%82%98-mobx%EA%B0%80-%EC%9E%98%EB%AA%BB%EB%90%9C-%EA%B2%83%EC%9D%BC%EA%B9%8C**](https://ui.toast.com/weekly-pick/ko_20200616#redux%EB%82%98-mobx%EA%B0%80-%EC%9E%98%EB%AA%BB%EB%90%9C-%EA%B2%83%EC%9D%BC%EA%B9%8C) **참고**
+
+\*\*\*\*
 
 저는 **Recoil** 같은 심플한 라이브러리나 **React context**로 주로 처리합니다. 
 
-**Redux를 써야하는 경우가 생긴다면, 반드시 흐름도를 보여주는 문서화를 잘해주시길 바랍니다.**
+**Redux를 써야한다면, 흐름도를 보여주는 문서화를 잘해주시길 바랍니다.**
 
 * user Store는 A, B, C 컴포넌트에서 사용중입니다.
 * user Epic에서 profile epic의 getProfile action을 호출합니다.
@@ -68,6 +71,10 @@ Redux는 Redux-devtool로 디버깅하기 좋습니다. 다만 저는 사용하�
 
 
 
+
+참고
+
+* [https://ui.toast.com/weekly-pick/ko\_20200616](https://ui.toast.com/weekly-pick/ko_20200616)
 
 
 
