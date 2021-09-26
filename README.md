@@ -1,5 +1,9 @@
 # 서론
 
+[Gitbook 링크 ](https://bugtype-kr.gitbook.io/react-deep-dive/)
+
+
+
 누가 읽어야 하는가?
 
 * 리액트 기본 경험이 있는자
